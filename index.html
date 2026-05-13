@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>KIIF | Innovation & Incubation Funnel Report · KAHER</title>
+<title>KIIF | Live Innovation Funnel · MedTech Translation Hub</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
@@ -19,7 +19,7 @@
 html{scroll-behavior:smooth;}
 body{font-family:'Outfit',sans-serif;background:var(--soft);color:var(--text);padding-bottom:48px;}
 
-/* STICKY FOOTER (custom) */
+/* STICKY FOOTER */
 .sticky-footer{
   position:fixed;bottom:0;left:0;right:0;height:36px;
   background:var(--navy);border-top:1px solid rgba(201,168,76,0.2);
@@ -30,7 +30,7 @@ body{font-family:'Outfit',sans-serif;background:var(--soft);color:var(--text);pa
 
 /* HEADER */
 .report-header{
-  background:var(--navy);padding:2.5rem 2rem 2rem;
+  background:var(--navy);padding:2rem 2rem 2rem;
   position:relative;overflow:hidden;
 }
 .report-header::before{
@@ -39,26 +39,46 @@ body{font-family:'Outfit',sans-serif;background:var(--soft);color:var(--text);pa
                    linear-gradient(90deg,rgba(201,168,76,0.05) 1px,transparent 1px);
   background-size:50px 50px;
 }
-.report-header-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+.report-header-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
 .report-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
 .report-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);font-weight:600;color:var(--white);line-height:1.1;margin-bottom:0.4rem;}
 .report-title span{color:var(--gold);font-style:italic;}
 .report-sub{font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:1.5rem;}
 .gold-bar{height:3px;background:linear-gradient(to right,var(--gold),var(--gold-l),var(--gold));border-radius:2px;max-width:300px;}
 
+/* LIVE INDICATOR */
+.live-indicator{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(13,27,62,0.85);backdrop-filter:blur(8px);
+  padding:6px 16px;border-radius:40px;
+  border:1px solid rgba(201,168,76,0.4);
+}
+.live-dot{
+  width:12px;height:12px;background-color:#2ecc71;
+  border-radius:50%;box-shadow:0 0 6px #2ecc71;
+  animation:pulseGreen 1.6s infinite;
+}
+@keyframes pulseGreen{
+  0%{opacity:0.5;transform:scale(0.8);}
+  50%{opacity:1;transform:scale(1.2);background-color:#27ae60;}
+  100%{opacity:0.5;transform:scale(0.8);}
+}
+.live-text{font-size:10px;font-weight:700;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;}
+.last-updated{font-size:10px;font-family:'JetBrains Mono',monospace;color:rgba(255,255,255,0.6);border-left:1px solid rgba(255,255,255,0.2);padding-left:10px;margin-left:2px;}
+
 /* container */
 .container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem;}
 
 /* KPI cards */
-.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:2rem;}
-.kpi-card{background:var(--white);border-radius:14px;padding:1.25rem 1rem;border:1px solid var(--border);box-shadow:var(--shadow);text-align:center;transition:transform 0.2s, box-shadow 0.2s;cursor:pointer;}
-.kpi-card:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(0,0,0,0.08);}
-.kpi-label{font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
-.kpi-value{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;line-height:1;}
-.kpi-sub{font-size:11px;color:var(--muted);margin-top:4px;}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:2.2rem;}
+.kpi-card{background:var(--white);border-radius:16px;padding:1.2rem 0.8rem;border:1px solid var(--border);box-shadow:var(--shadow);text-align:center;transition:transform 0.2s, box-shadow 0.2s;cursor:pointer;}
+.kpi-card:hover{transform:translateY(-4px);box-shadow:0 16px 28px rgba(0,0,0,0.08);}
+.kpi-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.kpi-value{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;line-height:1;}
+.kpi-sub{font-size:11px;color:var(--muted);margin-top:5px;}
 .kv-navy{color:var(--navy);}.kv-blue{color:var(--blue);}.kv-purple{color:var(--purple);}.kv-green{color:var(--green);}.kv-gold{color:var(--gold);}.kv-red{color:var(--red);}
 
-/* section styling */
+/* section */
 .sec-label{display:flex;align-items:center;gap:10px;margin-bottom:1rem;}
 .sec-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);}
 .sec-line{flex:1;height:1px;background:rgba(201,168,76,0.25);max-width:50px;}
@@ -67,349 +87,354 @@ body{font-family:'Outfit',sans-serif;background:var(--soft);color:var(--text);pa
 .sec-sub{font-size:13px;color:var(--muted);margin-bottom:1.5rem;line-height:1.7;}
 section{margin-bottom:3rem;}
 
-/* funnel */
-.funnel-wrap{display:flex;flex-direction:column;gap:6px;}
-.funnel-row{display:grid;grid-template-columns:160px 1fr 60px 60px;gap:12px;align-items:center;padding:10px 16px;background:var(--white);border-radius:10px;border:1px solid var(--border);cursor:pointer;transition:all 0.2s;}
-.funnel-row:hover{background:#fefbf0;transform:translateX(5px);}
+/* FUNNEL */
+.funnel-wrap{display:flex;flex-direction:column;gap:8px;}
+.funnel-row{display:grid;grid-template-columns:160px 1fr 60px 60px;gap:12px;align-items:center;padding:10px 16px;background:var(--white);border-radius:12px;border:1px solid var(--border);cursor:pointer;transition:all 0.2s;}
+.funnel-row:hover{background:#fefbf0;transform:translateX(6px);}
 .funnel-stage{font-size:12px;font-weight:600;color:var(--white);padding:4px 10px;border-radius:20px;text-align:center;}
 .funnel-bar-wrap{height:10px;background:rgba(13,27,62,0.07);border-radius:6px;overflow:hidden;}
-.funnel-bar{height:100%;border-radius:6px;background:linear-gradient(to right,var(--gold),var(--gold-l));width:0%;transition:width 1s cubic-bezier(0.25,0.46,0.45,0.94);}
+.funnel-bar{height:100%;border-radius:6px;background:linear-gradient(to right,var(--gold),var(--gold-l));width:0%;transition:width 0.9s cubic-bezier(0.2,0.9,0.4,1.1);}
 .funnel-count{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--navy);text-align:center;}
 .funnel-pct{font-size:12px;color:var(--muted);text-align:center;}
-.detail-panel{background:#fefdf6;border-radius:1rem;margin-top:1rem;padding:0.8rem 1.2rem;border-left:4px solid var(--gold);font-size:0.85rem;transition:0.2s;}
+.detail-panel{background:#fefdf6;border-radius:1rem;margin-top:1rem;padding:0.8rem 1.2rem;border-left:4px solid var(--gold);font-size:0.85rem;}
 
-/* charts grid */
+/* charts */
 .charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
-.chart-card{background:var(--white);border-radius:14px;padding:1.5rem;border:1px solid var(--border);box-shadow:var(--shadow);}
-.chart-title{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:1.25rem;letter-spacing:0.04em;text-transform:uppercase;}
-.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
-.bar-label{font-size:12px;color:var(--text);min-width:120px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.chart-card{background:var(--white);border-radius:16px;padding:1.3rem;border:1px solid var(--border);box-shadow:var(--shadow);}
+.chart-title{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:1.2rem;letter-spacing:0.04em;text-transform:uppercase;}
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.bar-label{font-size:12px;color:var(--text);min-width:110px;white-space:nowrap;}
 .bar-track{flex:1;height:8px;background:rgba(13,27,62,0.07);border-radius:6px;overflow:hidden;}
-.bar-fill{height:100%;border-radius:6px;width:0%;transition:width 1s;}
+.bar-fill{height:100%;border-radius:6px;width:0%;transition:width 0.8s;}
 .bar-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);min-width:24px;text-align:right;}
 .donut-wrap{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
 .donut-legend{display:flex;flex-direction:column;gap:8px;}
 .legend-row{display:flex;align-items:center;gap:8px;}
-.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-
-/* product cards (projects) */
-.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
-.product-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem;position:relative;transition:transform 0.2s,box-shadow 0.2s;}
+.legend-dot{width:10px;height:10px;border-radius:50%;}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;}
+.product-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.1rem;transition:all 0.2s;}
 .product-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
 .product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
 .product-card.hot::before{background:linear-gradient(to right,var(--gold),var(--gold-l));}
+.product-card{position:relative;}
 .product-badge{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;margin-bottom:8px;}
 .badge-both{background:#e8f5e9;color:var(--green);}
 .badge-hw{background:#fce8e8;color:var(--red);}
 .badge-sw{background:#e8f0fe;color:var(--blue);}
-.product-name{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px;}
+.product-name{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:5px;}
 .product-status{font-size:11px;color:var(--muted);margin-top:6px;display:flex;align-items:center;gap:6px;}
-
-/* table for faculty projects */
-.table-wrap{background:var(--white);border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);}
-.table-search{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:center;}
-.search-input{flex:1;border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:13px;font-family:'Outfit',sans-serif;outline:none;}
+.table-wrap{background:var(--white);border-radius:16px;overflow:hidden;border:1px solid var(--border);}
+.table-search{padding:1rem 1.25rem;border-bottom:1px solid var(--border);}
+.search-input{width:100%;border:1px solid var(--border);border-radius:10px;padding:8px 12px;font-size:13px;font-family:'Outfit',sans-serif;outline:none;}
 .search-input:focus{border-color:var(--gold);}
 table{width:100%;border-collapse:collapse;font-size:12px;}
-thead th{background:var(--navy);color:rgba(255,255,255,0.7);font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:10px 14px;text-align:left;}
-tbody tr{border-bottom:1px solid var(--border);transition:background 0.15s;}
+thead th{background:var(--navy);color:rgba(255,255,255,0.75);font-size:10px;font-weight:500;letter-spacing:0.08em;padding:10px 14px;text-align:left;}
+tbody tr{border-bottom:1px solid var(--border);}
 tbody tr:hover{background:var(--cream);}
 td{padding:10px 14px;vertical-align:middle;}
 .status-pill{display:inline-block;font-size:10px;padding:2px 8px;border-radius:20px;background:var(--gold-pale);color:var(--navy);}
-
-/* insights */
-.insights-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;}
-.insight-card{background:var(--white);border-radius:12px;padding:1.4rem;border:1px solid var(--border);}
+.insights-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;}
+.insight-card{background:var(--white);border-radius:14px;padding:1.3rem;border:1px solid var(--border);}
 .insight-card.dark{background:var(--navy);}
-.insight-icon{font-size:24px;margin-bottom:0.75rem;}
+.insight-icon{font-size:26px;margin-bottom:0.7rem;}
 .insight-title{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:0.4rem;}
 .insight-card.dark .insight-title{color:var(--white);}
-.insight-text{font-size:13px;color:var(--muted);line-height:1.65;}
-.insight-card.dark .insight-text{color:rgba(255,255,255,0.5);}
-
-.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.insight-text{font-size:13px;color:var(--muted);line-height:1.6;}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s;}
 .reveal.visible{opacity:1;transform:translateY(0);}
-.reveal-d1{transition-delay:0.1s;}.reveal-d2{transition-delay:0.2s;}.reveal-d3{transition-delay:0.3s;}
-@media(max-width:640px){.charts-grid{grid-template-columns:1fr;}.funnel-row{grid-template-columns:120px 1fr 40px 40px;}}
+@media(max-width:700px){.charts-grid{grid-template-columns:1fr;}.funnel-row{grid-template-columns:110px 1fr 45px 40px;}.live-indicator{padding:4px 12px;}}
 </style>
 </head>
 <body>
-
 <div class="sticky-footer">
-  <span>Made with <i class="fas fa-heart" style="color: #e25555;"></i> ~SBH -NITK &nbsp;·&nbsp; Last Updated 13-May-2026 </span>
-  </div>
-
+  <span>Made with <i class="fas fa-heart" style="color:#e25555;"></i> ~SBH -NITK &nbsp;·&nbsp; KAHER Innovation & Incubation Foundation &nbsp;<b>·</b>&nbsp; LIVE DATA ENABLED</span>
+</div>
 <div class="report-header">
   <div class="report-header-inner">
-    <div class="report-eyebrow">KAHER · KLE ACADEMY OF HIGHER EDUCATION & RESEARCH</div>
-    <div class="report-title">KIIF <span>Innovation</span> Funnel<br>Clinical Validation & MedTech Pipeline</div>
-    <div class="report-sub">Foundation strengthening · Strategic partnerships · ₹1Cr funding target</div>
-    <div class="gold-bar"></div>
+    <div>
+      <div class="report-eyebrow">KAHER · KLE ACADEMY OF HIGHER EDUCATION & RESEARCH</div>
+      <div class="report-title">KIIF <span>Innovation</span> Funnel<br>Clinical Validation & MedTech Pipeline</div>
+      <div class="report-sub">Foundation strengthening · Strategic partnerships · ₹1Cr+ funding target</div>
+      <div class="gold-bar"></div>
+    </div>
+    <div class="live-indicator">
+      <div class="live-dot" id="liveDot"></div>
+      <span class="live-text">LIVE DATA</span>
+      <span class="last-updated" id="lastUpdatedSpan">—</span>
+    </div>
   </div>
 </div>
-
 <div class="container">
-  <!-- KPI cards -->
-  <div class="kpi-grid" style="margin-top:2rem;">
-    <div class="kpi-card reveal"><div class="kpi-label">Grants submitted</div><div class="kpi-value kv-navy">12</div><div class="kpi-sub">DST · BIRAC · CSR</div></div>
-    <div class="kpi-card reveal reveal-d1"><div class="kpi-label">Workshops</div><div class="kpi-value kv-blue">7</div><div class="kpi-sub">design thinking, IP, maker</div></div>
-    <div class="kpi-card reveal reveal-d2"><div class="kpi-label">Seminars + Webinars</div><div class="kpi-value kv-purple">8</div><div class="kpi-sub">6 seminars · 2 webinars</div></div>
-    <div class="kpi-card reveal reveal-d3"><div class="kpi-label">Funding target</div><div class="kpi-value kv-gold">₹1 Cr+</div><div class="kpi-sub">prototyping lab & ops</div></div>
-    <div class="kpi-card reveal"><div class="kpi-label">Incubatees onboarded</div><div class="kpi-value kv-green">1</div><div class="kpi-sub">OUI Medical Inc.</div></div>
-    <div class="kpi-card reveal reveal-d1"><div class="kpi-label">Clinical validation pilots</div><div class="kpi-value kv-red">2</div><div class="kpi-sub">active support pathways</div></div>
+  <!-- KPI grid -->
+  <div class="kpi-grid reveal">
+    <div class="kpi-card"><div class="kpi-label">Grants submitted</div><div class="kpi-value kv-navy" id="kpi_grants">12</div><div class="kpi-sub">DST · BIRAC · CSR</div></div>
+    <div class="kpi-card"><div class="kpi-label">Workshops</div><div class="kpi-value kv-blue" id="kpi_workshops">7</div><div class="kpi-sub">design thinking, IP, maker</div></div>
+    <div class="kpi-card"><div class="kpi-label">Seminars + Webinars</div><div class="kpi-value kv-purple" id="kpi_seminars">8</div><div class="kpi-sub">6 seminars · 2 webinars</div></div>
+    <div class="kpi-card"><div class="kpi-label">Funding target</div><div class="kpi-value kv-gold" id="kpi_funding">1Cr+</div><div class="kpi-sub">prototyping lab & ops</div></div>
+    <div class="kpi-card"><div class="kpi-label">Incubatees onboarded</div><div class="kpi-value kv-green" id="kpi_incubatees">1</div><div class="kpi-sub">OUI Medical Inc.</div></div>
+    <div class="kpi-card"><div class="kpi-label">Clinical validation pilots</div><div class="kpi-value kv-red" id="kpi_pilots">2</div><div class="kpi-sub">active support pathways</div></div>
   </div>
 
-  <!-- 01 FUNNEL -->
+  <!-- FUNNEL SECTION -->
   <section class="reveal">
     <div class="sec-label"><span class="sec-num">01</span><div class="sec-line"></div></div>
     <div class="sec-title">MedTech <em>Innovation Funnel</em></div>
-    <div class="sec-sub">From clinical need identification to incubation & funding — current pipeline strength.</div>
-    <div class="funnel-wrap" id="funnelWrap">
-      <div class="funnel-row" data-stage="clinical">
-        <div class="funnel-stage" style="background:#0d1b3e;">Clinical Need ID</div>
-        <div class="funnel-bar-wrap"><div class="funnel-bar" data-w="100"></div></div>
-        <div class="funnel-count">14+</div><div class="funnel-pct">100%</div>
-      </div>
-      <div class="funnel-row" data-stage="prototype">
-        <div class="funnel-stage" style="background:#2471a3;">Prototyping & PoC</div>
-        <div class="funnel-bar-wrap"><div class="funnel-bar" data-w="50"></div></div>
-        <div class="funnel-count">7</div><div class="funnel-pct">50%</div>
-      </div>
-      <div class="funnel-row" data-stage="ip">
-        <div class="funnel-stage" style="background:#1b7a3e;">IP & Regulatory</div>
-        <div class="funnel-bar-wrap"><div class="funnel-bar" data-w="36"></div></div>
-        <div class="funnel-count">5</div><div class="funnel-pct">36%</div>
-      </div>
-      <div class="funnel-row" data-stage="validation">
-        <div class="funnel-stage" style="background:#784212;">Clinical Validation</div>
-        <div class="funnel-bar-wrap"><div class="funnel-bar" data-w="21"></div></div>
-        <div class="funnel-count">3</div><div class="funnel-pct">21%</div>
-      </div>
-      <div class="funnel-row" data-stage="incubation">
-        <div class="funnel-stage" style="background:#6c3483;">Incubation & Funding</div>
-        <div class="funnel-bar-wrap"><div class="funnel-bar" data-w="7"></div></div>
-        <div class="funnel-count">1</div><div class="funnel-pct">7%</div>
-      </div>
-    </div>
-    <div id="funnelDetail" class="detail-panel"><i class="fas fa-chart-line"></i> <strong>Click any funnel stage</strong> — view detailed metrics & strategic updates.</div>
+    <div class="sec-sub">From clinical need identification to incubation & funding — live pipeline strength.</div>
+    <div class="funnel-wrap" id="funnelContainer"></div>
+    <div id="funnelDetail" class="detail-panel"><i class="fas fa-chart-line"></i> <strong>Click any funnel stage</strong> — see live metrics & strategic updates.</div>
   </section>
 
-  <!-- 02 CHARTS : grants & skill distribution analog -->
+  <!-- CHARTS: grants & validation donut -->
   <section class="reveal">
     <div class="sec-label"><span class="sec-num">02</span><div class="sec-line"></div></div>
-    <div class="sec-title">Grant Pipeline & <em>Resource</em> Mobilisation</div>
-    <div class="sec-sub">Active applications and strategic focus areas.</div>
+    <div class="sec-title">Grant Pipeline & <em>Clinical Readiness</em></div>
+    <div class="sec-sub">Active applications by scheme and clinical validation maturity.</div>
     <div class="charts-grid">
-      <div class="chart-card">
-        <div class="chart-title">Grant Applications by Scheme</div>
-        <div id="grantChart">
-          <div class="bar-row"><span class="bar-label">DST / BIRAC</span><div class="bar-track"><div class="bar-fill" data-w="42" style="background:#0d1b3e;"></div></div><span class="bar-num">5</span></div>
-          <div class="bar-row"><span class="bar-label">CSR / Corporate</span><div class="bar-track"><div class="bar-fill" data-w="25" style="background:#2471a3;"></div></div><span class="bar-num">3</span></div>
-          <div class="bar-row"><span class="bar-label">Karnataka State CoE</span><div class="bar-track"><div class="bar-fill" data-w="25" style="background:#c9a84c;"></div></div><span class="bar-num">3</span></div>
-          <div class="bar-row"><span class="bar-label">BFI NAMAH</span><div class="bar-track"><div class="bar-fill" data-w="8" style="background:#1b7a3e;"></div></div><span class="bar-num">1</span></div>
-        </div>
-      </div>
-      <div class="chart-card">
-        <div class="chart-title">Clinical Validation Readiness</div>
-        <div class="donut-wrap">
-          <svg class="donut-svg" width="120" height="120" viewBox="0 0 120 120">
-            <circle cx="60" cy="60" r="46" fill="none" stroke="#e8f0fe" stroke-width="18"/>
-            <circle cx="60" cy="60" r="46" fill="none" stroke="#1b7a3e" stroke-width="18" stroke-dasharray="108 360" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>
-            <circle cx="60" cy="60" r="46" fill="none" stroke="#c9a84c" stroke-width="18" stroke-dasharray="180 360" stroke-dashoffset="-108" transform="rotate(-90 60 60)"/>
-            <circle cx="60" cy="60" r="46" fill="none" stroke="#2471a3" stroke-width="18" stroke-dasharray="72 360" stroke-dashoffset="-288" transform="rotate(-90 60 60)"/>
-            <text x="60" y="55" text-anchor="middle" font-size="18" font-weight="600" fill="#0d1b3e">3</text>
-            <text x="60" y="70" text-anchor="middle" font-size="9" fill="#6b7a99">pilots</text>
-          </svg>
-          <div class="donut-legend">
-            <div class="legend-row"><div class="legend-dot" style="background:#1b7a3e;"></div><span class="legend-label">Framework ready</span><span class="legend-val">30% → dept formed</span></div>
-            <div class="legend-row"><div class="legend-dot" style="background:#c9a84c;"></div><span class="legend-label">Active pilots</span><span class="legend-val">3 ongoing</span></div>
-            <div class="legend-row"><div class="legend-dot" style="background:#2471a3;"></div><span class="legend-label">Revenue pathway</span><span class="legend-val">Q3 2026</span></div>
-          </div>
-        </div>
-      </div>
+      <div class="chart-card"><div class="chart-title">Grant Applications by Scheme</div><div id="grantChartContainer"></div></div>
+      <div class="chart-card"><div class="chart-title">Clinical Validation Readiness</div><div id="donutContainer" class="donut-wrap"></div></div>
     </div>
   </section>
 
-  <!-- 03 PRODUCT INNOVATION PROJECTS (faculty & student innovations) -->
+  <!-- FLAGSHIP PROJECTS -->
   <section class="reveal">
     <div class="sec-label"><span class="sec-num">03</span><div class="sec-line"></div></div>
     <div class="sec-title">Flagship <em>Innovation Projects</em></div>
     <div class="sec-sub">Faculty & student-led MedTech prototypes — IP & regulatory traction.</div>
-    <div class="product-grid">
-      <div class="product-card hot"><span class="product-badge badge-both">HW+SW</span><div class="product-name">Therapy Cube (Manishi Mehta)</div><div class="product-status"><i class="fas fa-microchip"></i> BOM ready · IP consultation · fabrication shipping</div></div>
-      <div class="product-card hot"><span class="product-badge badge-hw">Hardware</span><div class="product-name">Dr. Anand Badavannavar</div><div class="product-status"><i class="fas fa-file-alt"></i> Phase I: regulatory docs · PCB pending</div></div>
-      <div class="product-card hot"><span class="product-badge badge-both">HW+SW</span><div class="product-name">Dr. Punya’s Project</div><div class="product-status"><i class="fas fa-check-circle"></i> Phase II: PCB fab done, regulatory partial</div></div>
-      <div class="product-card"><span class="product-badge badge-hw">Hardware</span><div class="product-name">ACE Care Connect (oncology navigation)</div><div class="product-status">Clinical partnership · validation design</div></div>
-    </div>
+    <div class="product-grid" id="projectsGrid"></div>
   </section>
 
-  <!-- 04 FACULTY / PROJECT TABLE (searchable) -->
+  <!-- PROJECT ROSTER TABLE -->
   <section class="reveal">
     <div class="sec-label"><span class="sec-num">04</span><div class="sec-line"></div></div>
     <div class="sec-title">Innovation <em>Project Roster</em></div>
-    <div class="sec-sub">Active faculty & student projects — search by name, stage, or support type.</div>
-    <div class="table-wrap">
-      <div class="table-search"><input class="search-input" type="text" id="projectSearch" placeholder="Search by project name, lead, or phase..." oninput="filterProjectTable()"></div>
-      <table id="projectTable">
-        <thead><tr><th>#</th><th>Project Name</th><th>Lead</th><th>Phase</th><th>IP / Regulatory</th><th>Clinical Validation</th></tr></thead>
-        <tbody id="projectBody">
-          <tr><td>1</td><td class="td-name">Therapy Cube</td><td>Dr. Manishi Mehta</td><td><span class="status-pill">Prototyping</span></td><td>IP consultation done</td><td>Feasibility completed</td></tr>
-          <tr><td>2</td><td class="td-name">Dr. Anand Badavannavar Device</td><td>Dr. Anand Badavannavar</td><td><span class="status-pill">Phase I</span></td><td>Regulatory docs underway</td><td>—</td></tr>
-          <tr><td>3</td><td class="td-name">Dr. Punya’s MedTech</td><td>Dr. Punya</td><td><span class="status-pill">Phase II</span></td><td>PCB done, regulatory partial</td><td>Clinical feedback planned</td></tr>
-          <tr><td>4</td><td class="td-name">OUI Medical Inc.</td><td>Incubation</td><td><span class="status-pill">Incubated</span></td><td>Strategic agreement signed</td><td>Mentorship active</td></tr>
-          <tr><td>5</td><td class="td-name">ACE Care Connect</td><td>Shailesh Chavan</td><td><span class="status-pill">Partnership</span></td><td>—</td><td>Clinical partner KIIF</td></tr>
-          <tr><td>6</td><td class="td-name">IIT Dharwad Biodesign</td><td>KIIF + IITD</td><td><span class="status-pill">Concept note</span></td><td>Clinical immersion planned</td><td>Structured collaboration</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <div class="sec-sub">Active projects & clinical collaborations — searchable.</div>
+    <div class="table-wrap"><div class="table-search"><input class="search-input" type="text" id="projectSearch" placeholder="Search by project name, lead, or phase..."></div>
+    <table id="projectTable"><thead><tr><th>#</th><th>Project Name</th><th>Lead</th><th>Phase</th><th>IP / Regulatory</th><th>Clinical Validation</th></tr></thead><tbody id="projectTableBody"></tbody></table></div>
   </section>
 
-  <!-- 05 STRATEGIC PARTNERSHIPS & ECOSYSTEM -->
+  <!-- STRATEGIC PARTNERSHIPS -->
   <section class="reveal">
     <div class="sec-label"><span class="sec-num">05</span><div class="sec-line"></div></div>
-    <div class="sec-title">Strategic <em>Partnerships & Engagement</em></div>
+    <div class="sec-title">Strategic <em>Partnerships & Ecosystem</em></div>
     <div class="sec-sub">LoIs, ecosystem mapping, and investor connect — fueling the funnel.</div>
-    <div class="insights-grid">
-      <div class="insight-card dark"><div class="insight-icon">🤝</div><div class="insight-title">Venture Center, Pune</div><div class="insight-text">LoI finalized for clinical validation collaboration. KAHER positioned as Clinical Partner under West Zone MedTech Product Realization Hub (BFI NAMAH).</div></div>
-      <div class="insight-card"><div class="insight-icon">🏛️</div><div class="insight-title">Govt. of Karnataka CoE</div><div class="insight-text">Detailed proposal submitted for Centre of Excellence in MedTech & HealthTech (Beyond Bengaluru scheme). Under active review.</div></div>
-      <div class="insight-card"><div class="insight-icon">🎓</div><div class="insight-title">IIT Dharwad Biodesign</div><div class="insight-text">Clinical immersion & Biodesign collaboration concept note shared. Multiple follow-up meetings.</div></div>
-      <div class="insight-card dark"><div class="insight-icon">🏦</div><div class="insight-title">IDFC First Bank</div><div class="insight-text">Strategic discussions for regional investor connect program at KAHER — early stage.</div></div>
-      <div class="insight-card"><div class="insight-icon">📄</div><div class="insight-title">BFI NAMAH Evaluation</div><div class="insight-text">Presentation to BFI panel (Dr. Anant Bhan et al.). Clinical validation executive summary shared.</div></div>
-      <div class="insight-card"><div class="insight-icon">⚕️</div><div class="insight-title">Clinical Validation Dept.</div><div class="insight-text">Internal framework finalized. Institutional meeting held (Feb 2026) with Registrar, SMO, clinical faculty — SOP underway.</div></div>
-    </div>
-  </section>
-
-  <!-- 06 NEXT ONE YEAR PLAN -->
-  <section class="reveal">
-    <div class="sec-label"><span class="sec-num">06</span><div class="sec-line"></div></div>
-    <div class="sec-title">Next One Year Plan <em>Foundation Strengthening</em></div>
-    <div class="sec-sub">Focus areas: prototyping lab, structured innovation clinics, funding mobilisation ≥₹1 Cr.</div>
-    <div class="insights-grid">
-      <div class="insight-card"><div class="insight-icon">🔧</div><div class="insight-title">Basic Design & Making Lab</div><div class="insight-text">Functional prototyping space for PoC development — supporting student & faculty innovators.</div></div>
-      <div class="insight-card"><div class="insight-icon">💡</div><div class="insight-title">Innovation Clinics</div><div class="insight-text">Clinical problem ID workshops, design thinking, IP awareness, maker support — all non‑interfering with academics.</div></div>
-      <div class="insight-card dark"><div class="insight-icon">📊</div><div class="insight-title">Faculty Research Translation</div><div class="insight-text">Early IP support, grant/pilot proposal mentoring, translational opportunity scouting.</div></div>
-      <div class="insight-card"><div class="insight-icon">🩺</div><div class="insight-title">Clinical Validation Support</div><div class="insight-text">Structured KAHER clinical strengths → formal validation service & revenue pathway.</div></div>
-    </div>
+    <div class="insights-grid" id="insightsGrid"></div>
   </section>
 </div>
 
 <script>
-// scroll reveal
+// ---------- CONFIGURE YOUR GOOGLE APPS SCRIPT WEB APP URL ----------
+const API_URL = "https://script.google.com/macros/s/AKfycbx4NHz0aPfWsoC2v2lzvkDm24ZmjQHMAoqolrH8qoCo-_XJwOLZYe1NS8a9VWS6UgOirw/exec";  // <-- REPLACE WITH YOUR ACTUAL URL
+
+// DOM elements
+const liveDot = document.getElementById('liveDot');
+const lastUpdatedSpan = document.getElementById('lastUpdatedSpan');
+let funnelDataCache = [];
+
+// Helper: format date
+function formatDate(isoString){
+  if(!isoString) return "Updating...";
+  const d = new Date(isoString);
+  return d.toLocaleString();
+}
+
+// Render funnel dynamically
+function renderFunnel(funnelArray){
+  const container = document.getElementById('funnelContainer');
+  if(!container) return;
+  container.innerHTML = '';
+  funnelArray.forEach((stage, idx) => {
+    const row = document.createElement('div');
+    row.className = 'funnel-row';
+    row.setAttribute('data-stage-idx', idx);
+    row.innerHTML = `
+      <div class="funnel-stage" style="background:${stage.color};">${stage.stage}</div>
+      <div class="funnel-bar-wrap"><div class="funnel-bar" data-w="${stage.percent}" style="width:${stage.percent}%;"></div></div>
+      <div class="funnel-count">${stage.count}</div>
+      <div class="funnel-pct">${stage.percent}%</div>
+    `;
+    row.addEventListener('click', () => {
+      const details = {
+        'Clinical Need ID': '🧠 Clinical Need ID: 14+ clinical problems identified via workshops. IIT Dharwad Biodesign collaboration ongoing.',
+        'Prototyping & PoC': '⚙️ Prototyping & PoC: Therapy Cube BOM ready, Dr.Punya PCB fab completed. Basic Design Lab planned.',
+        'IP & Regulatory': '📜 IP & Regulatory: IP consultation for Therapy Cube, regulatory documentation Phase I. IP sessions held.',
+        'Clinical Validation': '🏥 Clinical Validation: Formal dept structure drafted. LoI with Venture Center. ACE Care Connect partnership.',
+        'Incubation & Funding': '🚀 Incubation & Funding: OUI Medical Inc. onboarded. BFI NAMAH proposal presented. ₹1Cr+ target.'
+      };
+      const detailText = details[stage.stage] || `✅ ${stage.stage}: ${stage.count} active projects, ${stage.percent}% conversion.`;
+      document.getElementById('funnelDetail').innerHTML = `<i class="fas fa-info-circle"></i> <strong>${stage.stage}</strong><br>${detailText}`;
+    });
+    container.appendChild(row);
+  });
+}
+
+// render grants bar chart
+function renderGrants(grantsArray){
+  const container = document.getElementById('grantChartContainer');
+  if(!container) return;
+  const maxVal = Math.max(...grantsArray.map(g => g.applications), 1);
+  container.innerHTML = '';
+  grantsArray.forEach(grant => {
+    const widthPercent = (grant.applications / maxVal) * 100;
+    const barDiv = document.createElement('div');
+    barDiv.className = 'bar-row';
+    barDiv.innerHTML = `
+      <span class="bar-label">${grant.scheme}</span>
+      <div class="bar-track"><div class="bar-fill" style="background:#0d1b3e; width:${widthPercent}%;"></div></div>
+      <span class="bar-num">${grant.applications}</span>
+    `;
+    container.appendChild(barDiv);
+  });
+}
+
+// donut chart from static data (clinical validation readiness)
+function renderDonut(){
+  const container = document.getElementById('donutContainer');
+  if(!container) return;
+  container.innerHTML = `
+    <svg width="120" height="120" viewBox="0 0 120 120">
+      <circle cx="60" cy="60" r="46" fill="none" stroke="#e8f0fe" stroke-width="18"/>
+      <circle cx="60" cy="60" r="46" fill="none" stroke="#1b7a3e" stroke-width="18" stroke-dasharray="108 360" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>
+      <circle cx="60" cy="60" r="46" fill="none" stroke="#c9a84c" stroke-width="18" stroke-dasharray="180 360" stroke-dashoffset="-108" transform="rotate(-90 60 60)"/>
+      <circle cx="60" cy="60" r="46" fill="none" stroke="#2471a3" stroke-width="18" stroke-dasharray="72 360" stroke-dashoffset="-288" transform="rotate(-90 60 60)"/>
+      <text x="60" y="55" text-anchor="middle" font-size="18" font-weight="600" fill="#0d1b3e">3</text>
+      <text x="60" y="70" text-anchor="middle" font-size="9" fill="#6b7a99">pilots</text>
+    </svg>
+    <div class="donut-legend">
+      <div class="legend-row"><div class="legend-dot" style="background:#1b7a3e;"></div><span class="legend-label">Framework ready</span><span class="legend-val">30%</span></div>
+      <div class="legend-row"><div class="legend-dot" style="background:#c9a84c;"></div><span class="legend-label">Active pilots</span><span class="legend-val">3 ongoing</span></div>
+      <div class="legend-row"><div class="legend-dot" style="background:#2471a3;"></div><span class="legend-label">Revenue pathway</span><span class="legend-val">Q3 2026</span></div>
+    </div>
+  `;
+}
+
+// render product cards (top projects)
+function renderProductCards(projects){
+  const grid = document.getElementById('projectsGrid');
+  if(!grid) return;
+  const topProjects = projects.slice(0,4);
+  grid.innerHTML = topProjects.map(p => `
+    <div class="product-card hot">
+      <span class="product-badge ${p.name.includes('Therapy') || p.name.includes('Punya') ? 'badge-both' : 'badge-hw'}">${p.name.includes('Therapy') ? 'HW+SW' : 'Hardware'}</span>
+      <div class="product-name">${p.name}</div>
+      <div class="product-status"><i class="fas fa-microchip"></i> ${p.ip.substring(0,45)}</div>
+    </div>
+  `).join('');
+}
+
+// render insights (partnerships from static but can be dynamic)
+function renderInsights(){
+  const grid = document.getElementById('insightsGrid');
+  if(grid){
+    grid.innerHTML = `
+      <div class="insight-card dark"><div class="insight-icon">🤝</div><div class="insight-title">Venture Center, Pune</div><div class="insight-text">LoI finalized for clinical validation collaboration. KAHER positioned as Clinical Partner (BFI NAMAH).</div></div>
+      <div class="insight-card"><div class="insight-icon">🏛️</div><div class="insight-title">Govt. of Karnataka CoE</div><div class="insight-text">Detailed proposal submitted for Centre of Excellence in MedTech & HealthTech (Beyond Bengaluru scheme).</div></div>
+      <div class="insight-card"><div class="insight-icon">🎓</div><div class="insight-title">IIT Dharwad Biodesign</div><div class="insight-text">Clinical immersion & Biodesign collaboration concept note shared.</div></div>
+      <div class="insight-card dark"><div class="insight-icon">🏦</div><div class="insight-title">IDFC First Bank</div><div class="insight-text">Discussions for regional investor connect program at KAHER.</div></div>
+    `;
+  }
+}
+
+// render project table
+function renderProjectTable(projects){
+  const tbody = document.getElementById('projectTableBody');
+  if(!tbody) return;
+  tbody.innerHTML = '';
+  projects.forEach((proj, idx) => {
+    const row = tbody.insertRow();
+    row.innerHTML = `
+      <td>${idx+1}</td>
+      <td class="td-name">${proj.name}</td>
+      <td>${proj.lead}</td>
+      <td><span class="status-pill">${proj.phase}</span></td>
+      <td>${proj.ip || '—'}</td>
+      <td>${proj.validation || '—'}</td>
+    `;
+  });
+  // search filter
+  const searchInput = document.getElementById('projectSearch');
+  if(searchInput){
+    searchInput.oninput = () => {
+      const q = searchInput.value.toLowerCase();
+      Array.from(tbody.rows).forEach(row => {
+        row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
+    };
+  }
+}
+
+// main fetch & update all live widgets
+async function loadLiveDashboard(){
+  try {
+    liveDot.style.backgroundColor = "#f39c12"; // loading orange
+    const response = await fetch(API_URL);
+    if(!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    
+    // update KPIs
+    if(data.metrics){
+      document.getElementById('kpi_grants').innerText = data.metrics.grants_submitted?.value ?? 12;
+      document.getElementById('kpi_workshops').innerText = data.metrics.workshops?.value ?? 7;
+      document.getElementById('kpi_seminars').innerText = data.metrics.seminars_webinars?.value ?? 8;
+      let fundingVal = data.metrics.funding_target_cr?.value ?? 1;
+      let suffix = data.metrics.funding_target_cr?.suffix || 'Cr+';
+      document.getElementById('kpi_funding').innerText = fundingVal + suffix;
+      document.getElementById('kpi_incubatees').innerText = data.metrics.incubatees?.value ?? 1;
+      document.getElementById('kpi_pilots').innerText = data.metrics.clinical_pilots?.value ?? 2;
+    }
+    // funnel
+    if(data.funnel && data.funnel.length){
+      renderFunnel(data.funnel);
+    }
+    // grants bar
+    if(data.grants && data.grants.length){
+      renderGrants(data.grants);
+    } else {
+      renderGrants([{scheme:"DST/BIRAC",applications:5},{scheme:"CSR",applications:3},{scheme:"Karnataka CoE",applications:3},{scheme:"BFI NAMAH",applications:1}]);
+    }
+    renderDonut();
+    if(data.projects && data.projects.length){
+      renderProductCards(data.projects);
+      renderProjectTable(data.projects);
+    } else {
+      // fallback
+      const fallbackProjects = [
+        {name:"Therapy Cube",lead:"Dr. Manishi Mehta",phase:"Prototyping",ip:"IP consultation done",validation:"Feasibility done"},
+        {name:"Dr. Anand Badavannavar",lead:"Dr. Anand B.",phase:"Phase I",ip:"Regulatory docs",validation:"—"},
+        {name:"Dr. Punya’s Project",lead:"Dr. Punya",phase:"Phase II",ip:"PCB fab done",validation:"Clinical planned"},
+        {name:"OUI Medical Inc.",lead:"—",phase:"Incubated",ip:"Agreement signed",validation:"Mentorship active"}
+      ];
+      renderProductCards(fallbackProjects);
+      renderProjectTable(fallbackProjects);
+    }
+    renderInsights();
+    
+    // update timestamp & live dot
+    if(data.lastUpdated){
+      lastUpdatedSpan.innerText = formatDate(data.lastUpdated);
+    } else {
+      lastUpdatedSpan.innerText = new Date().toLocaleString();
+    }
+    liveDot.style.backgroundColor = "#2ecc71";
+    liveDot.style.boxShadow = "0 0 8px #2ecc71";
+  } catch(err){
+    console.error("Live fetch error:", err);
+    lastUpdatedSpan.innerText = "Offline / cached";
+    liveDot.style.backgroundColor = "#e74c3c";
+    liveDot.style.boxShadow = "0 0 6px #e74c3c";
+    document.getElementById('funnelDetail').innerHTML = '<i class="fas fa-exclamation-triangle"></i> <strong>Connection issue</strong> — Check Apps Script deployment URL & CORS. Ensure web app is published.';
+  }
+}
+
+// intersection observer for reveals
 const reveals = document.querySelectorAll('.reveal');
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
 },{threshold:0.1});
 reveals.forEach(el => obs.observe(el));
 
-// animate bars on scroll
-const barObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.querySelectorAll('.bar-fill, .funnel-bar').forEach(bar => {
-        const width = bar.getAttribute('data-w');
-        if(width) bar.style.width = width + '%';
-      });
-    }
-  });
-},{threshold:0.2});
-document.querySelectorAll('.chart-card, .funnel-wrap').forEach(el => barObserver.observe(el));
-
-// funnel interactivity: detail panel update
-const funnelRows = document.querySelectorAll('.funnel-row');
-const detailDiv = document.getElementById('funnelDetail');
-const funnelDetails = {
-  clinical: '🧠 Clinical Need Identification: 14+ clinical problems identified via workshops (Physiotherapy, Oncology, Geriatric care). IIT Dharwad Biodesign collaboration ongoing.',
-  prototype: '⚙️ Prototyping & PoC: Therapy Cube (BOM ready), Dr.Punya PCB fab completed. Basic Design Lab planned for FY26–27.',
-  ip: '📜 IP & Regulatory: IP consultation for Therapy Cube, Dr.Anand regulatory documentation Phase I. IP awareness sessions held.',
-  validation: '🏥 Clinical Validation: Formal dept structure drafted. 2 pilots + ACE Care Connect validation partnership. LoI with Venture Center.',
-  incubation: '🚀 Incubation & Funding: OUI Medical Inc. onboarded. BFI NAMAH proposal presented. ₹1Cr+ target via DST/BIRAC/CSR.'
-};
-funnelRows.forEach(row => {
-  row.addEventListener('click', () => {
-    const stage = row.getAttribute('data-stage');
-    if(stage && funnelDetails[stage]) detailDiv.innerHTML = `<i class="fas fa-info-circle"></i> <strong>${stage.replace(/([A-Z])/g, ' $1').trim()}</strong><br>${funnelDetails[stage]}`;
-    else detailDiv.innerHTML = `<i class="fas fa-chart-line"></i> <strong>Pipeline insight</strong> — Click any stage for deep metrics. Current funnel shows strong clinical need translation to incubation.`;
-  });
-});
-
-// searchable project table
-function filterProjectTable(){
-  const query = document.getElementById('projectSearch').value.toLowerCase();
-  const rows = document.querySelectorAll('#projectBody tr');
-  rows.forEach(row => {
-    row.style.display = row.textContent.toLowerCase().includes(query) ? '' : 'none';
-  });
-}
+// initial load + refresh every 45 seconds
+loadLiveDashboard();
+setInterval(loadLiveDashboard, 45000);
 </script>
 </body>
 </html>
-<script>
-  const API_URL = "https://script.google.com/macros/s/AKfycbx4NHz0aPfWsoC2v2lzvkDm24ZmjQHMAoqolrH8qoCo-_XJwOLZYe1NS8a9VWS6UgOirw/exec";
-  
-  async function loadLiveData() {
-    try {
-      const response = await fetch(API_URL);
-      const data = await response.json();
-      
-      // Update KPI cards
-      document.getElementById("grants_submitted").innerText = data.metrics.grants_submitted.value;
-      document.getElementById("workshops").innerText = data.metrics.workshops.value;
-      document.getElementById("seminars_webinars").innerText = data.metrics.seminars_webinars.value;
-      document.getElementById("funding_target").innerHTML = data.metrics.funding_target_cr.value + (data.metrics.funding_target_cr.suffix || "");
-      document.getElementById("incubatees").innerText = data.metrics.incubatees.value;
-      document.getElementById("clinical_pilots").innerText = data.metrics.clinical_pilots.value;
-      
-      // Update funnel bars & counts
-      const funnelRows = document.querySelectorAll(".funnel-row");
-      data.funnel.forEach((stage, idx) => {
-        if (funnelRows[idx]) {
-          funnelRows[idx].querySelector(".funnel-count").innerText = stage.count;
-          funnelRows[idx].querySelector(".funnel-pct").innerText = stage.percent + "%";
-          funnelRows[idx].querySelector(".funnel-bar").style.width = stage.percent + "%";
-        }
-      });
-      
-      // Update grant bars
-      const maxApps = Math.max(...data.grants.map(g => g.applications));
-      const grantBars = document.querySelectorAll(".grant-bar-fill");
-      data.grants.forEach((grant, idx) => {
-        if (grantBars[idx]) {
-          const widthPercent = (grant.applications / maxApps) * 100;
-          grantBars[idx].style.width = widthPercent + "%";
-          grantBars[idx].nextElementSibling.innerText = grant.applications;
-        }
-      });
-      
-      // Rebuild projects table
-      const tbody = document.getElementById("projectBody");
-      if (tbody) {
-        tbody.innerHTML = "";
-        data.projects.forEach((proj, idx) => {
-          tbody.innerHTML += `<tr>
-            <td>${idx + 1}</td>
-            <td class="td-name">${proj.name}</td>
-            <td>${proj.lead}</td>
-            <td><span class="status-pill">${proj.phase}</span></td>
-            <td>${proj.ip}</td>
-            <td>${proj.validation}</td>
-          </tr>`;
-        });
-      }
-      
-      // Update timestamp
-      const timestampEl = document.getElementById("lastUpdated");
-      if (timestampEl) {
-        timestampEl.innerText = `📡 Last sync: ${new Date(data.lastUpdated).toLocaleString()}`;
-      }
-      
-    } catch (err) {
-      console.error("Live data fetch failed:", err);
-      const errorEl = document.getElementById("liveDataError");
-      if (errorEl) errorEl.innerText = "⚠️ Using cached data. Check network or Google Script deployment.";
-    }
-  }
-  
-  // Load immediately and then every 60 seconds
-  loadLiveData();
-  setInterval(loadLiveData, 60000);
-</script>
