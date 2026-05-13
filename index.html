@@ -343,3 +343,73 @@ function filterProjectTable(){
 </script>
 </body>
 </html>
+<script>
+  const API_URL = "https://script.google.com/macros/s/AKfycbx4NHz0aPfWsoC2v2lzvkDm24ZmjQHMAoqolrH8qoCo-_XJwOLZYe1NS8a9VWS6UgOirw/exec";
+  
+  async function loadLiveData() {
+    try {
+      const response = await fetch(API_URL);
+      const data = await response.json();
+      
+      // Update KPI cards
+      document.getElementById("grants_submitted").innerText = data.metrics.grants_submitted.value;
+      document.getElementById("workshops").innerText = data.metrics.workshops.value;
+      document.getElementById("seminars_webinars").innerText = data.metrics.seminars_webinars.value;
+      document.getElementById("funding_target").innerHTML = data.metrics.funding_target_cr.value + (data.metrics.funding_target_cr.suffix || "");
+      document.getElementById("incubatees").innerText = data.metrics.incubatees.value;
+      document.getElementById("clinical_pilots").innerText = data.metrics.clinical_pilots.value;
+      
+      // Update funnel bars & counts
+      const funnelRows = document.querySelectorAll(".funnel-row");
+      data.funnel.forEach((stage, idx) => {
+        if (funnelRows[idx]) {
+          funnelRows[idx].querySelector(".funnel-count").innerText = stage.count;
+          funnelRows[idx].querySelector(".funnel-pct").innerText = stage.percent + "%";
+          funnelRows[idx].querySelector(".funnel-bar").style.width = stage.percent + "%";
+        }
+      });
+      
+      // Update grant bars
+      const maxApps = Math.max(...data.grants.map(g => g.applications));
+      const grantBars = document.querySelectorAll(".grant-bar-fill");
+      data.grants.forEach((grant, idx) => {
+        if (grantBars[idx]) {
+          const widthPercent = (grant.applications / maxApps) * 100;
+          grantBars[idx].style.width = widthPercent + "%";
+          grantBars[idx].nextElementSibling.innerText = grant.applications;
+        }
+      });
+      
+      // Rebuild projects table
+      const tbody = document.getElementById("projectBody");
+      if (tbody) {
+        tbody.innerHTML = "";
+        data.projects.forEach((proj, idx) => {
+          tbody.innerHTML += `<tr>
+            <td>${idx + 1}</td>
+            <td class="td-name">${proj.name}</td>
+            <td>${proj.lead}</td>
+            <td><span class="status-pill">${proj.phase}</span></td>
+            <td>${proj.ip}</td>
+            <td>${proj.validation}</td>
+          </tr>`;
+        });
+      }
+      
+      // Update timestamp
+      const timestampEl = document.getElementById("lastUpdated");
+      if (timestampEl) {
+        timestampEl.innerText = `📡 Last sync: ${new Date(data.lastUpdated).toLocaleString()}`;
+      }
+      
+    } catch (err) {
+      console.error("Live data fetch failed:", err);
+      const errorEl = document.getElementById("liveDataError");
+      if (errorEl) errorEl.innerText = "⚠️ Using cached data. Check network or Google Script deployment.";
+    }
+  }
+  
+  // Load immediately and then every 60 seconds
+  loadLiveData();
+  setInterval(loadLiveData, 60000);
+</script>
