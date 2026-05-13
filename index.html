@@ -234,30 +234,18 @@ function formatDate(isoString){
   if(!isoString) return "Updating...";
   const d = new Date(isoString);
   
-  // Get day (2-digit)
   const day = String(d.getDate()).padStart(2, '0');
-  
-  // Get month abbreviation (Jan, Feb, Mar, etc.)
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   const month = months[d.getMonth()];
-  
-  // Get full year
   const year = d.getFullYear();
   
-  // Get time (hours:minutes:seconds AM/PM)
   let hours = d.getHours();
   const minutes = String(d.getMinutes()).padStart(2, '0');
-  const seconds = String(d.getSeconds()).padStart(2, '0');
   const ampm = hours >= 12 ? 'PM' : 'AM';
   hours = hours % 12;
-  hours = hours ? hours : 12; // convert hour '0' to '12'
-  const formattedHours = String(hours).padStart(2, '0');
+  hours = hours ? hours : 12;
   
-  const timeStr = `${formattedHours}:${minutes}:${seconds} ${ampm}`;
-  
-  // Final format: DD-MMM-YYYY, HH:MM:SS AM/PM
-  return `${day}-${month}-${year}, ${timeStr}`;
-}
+  return `${day}-${month}-${year}, ${hours}:${minutes} ${ampm}`;
 }
 
 // Render funnel dynamically
