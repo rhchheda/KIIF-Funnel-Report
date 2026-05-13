@@ -147,7 +147,7 @@ td{padding:10px 14px;vertical-align:middle;}
 </head>
 <body>
 <div class="sticky-footer">
-  <span>Made with <i class="fas fa-heart" style="color:#e25555;"></i> ~SBH -NITK &nbsp;·&nbsp; KAHER Innovation & Incubation Foundation &nbsp;<b>·</b>&nbsp; LIVE DATA ENABLED</span>
+  <span>Made with <i class="fas fa-heart" style="color:#e25555;"></i> ~SBH -NITK &nbsp;·&nbsp; KAHER Innovation & Incubation Foundation &nbsp;<b>·</b>&nbsp;</span>
 </div>
 <div class="report-header">
   <div class="report-header-inner">
@@ -230,11 +230,34 @@ const liveDot = document.getElementById('liveDot');
 const lastUpdatedSpan = document.getElementById('lastUpdatedSpan');
 let funnelDataCache = [];
 
-// Helper: format date
 function formatDate(isoString){
   if(!isoString) return "Updating...";
   const d = new Date(isoString);
-  return d.toLocaleString();
+  
+  // Get day (2-digit)
+  const day = String(d.getDate()).padStart(2, '0');
+  
+  // Get month abbreviation (Jan, Feb, Mar, etc.)
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const month = months[d.getMonth()];
+  
+  // Get full year
+  const year = d.getFullYear();
+  
+  // Get time (hours:minutes:seconds AM/PM)
+  let hours = d.getHours();
+  const minutes = String(d.getMinutes()).padStart(2, '0');
+  const seconds = String(d.getSeconds()).padStart(2, '0');
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // convert hour '0' to '12'
+  const formattedHours = String(hours).padStart(2, '0');
+  
+  const timeStr = `${formattedHours}:${minutes}:${seconds} ${ampm}`;
+  
+  // Final format: DD-MMM-YYYY, HH:MM:SS AM/PM
+  return `${day}-${month}-${year}, ${timeStr}`;
+}
 }
 
 // Render funnel dynamically
